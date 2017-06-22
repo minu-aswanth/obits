@@ -1,7 +1,7 @@
 <?php
 include 'dblinker.php';
 
-function login(){
+function add_depo(){
 try {
 	$latitude = $_POST['latitude'];
 	$longitude = $_POST['longitude'];
@@ -21,6 +21,6 @@ catch(Exception $e){
     }
 }
 session_start();
-echo login();
+echo add_depo();
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 include 'dblinker.php';
 
-function login(){
+function add_bus(){
 try {
 	$reg_no = $_POST['regno'];
 	$phone_no = $_POST['phoneno'];
@@ -21,6 +21,6 @@ catch(Exception $e){
     }
 }
 session_start();
-echo login();
+echo add_bus();
 ?>
 

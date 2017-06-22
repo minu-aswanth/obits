@@ -1,7 +1,7 @@
 <?php
 include 'dblinker.php';
 
-function login(){
+function delete_bus(){
 try {
 	$reg_no = $_POST['regno'];
 	
@@ -17,6 +17,6 @@ catch(Exception $e){
     }
 }
 session_start();
-echo login();
+echo delete_bus();
 ?>
 
