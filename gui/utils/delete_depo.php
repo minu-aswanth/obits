@@ -7,7 +7,7 @@ try {
 	
 	$link = linkToOBITS();
 	$handle=$link->prepare("DELETE FROM `depo` WHERE `ID`=:id"); 
-	$handle->bindParam(':latitude', $latitude);
+	$handle->bindParam(':id', $id);
 	$handle->execute();
 	return "success";
     }
