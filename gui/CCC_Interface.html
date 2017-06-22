@@ -1,9 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>CCC Interface</title>
+  <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
+  <link rel="stylesheet" type="text/css" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css">
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
+  <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
+  <!-- <script src="js/autocomplete_bus_id.js" type="text/javascript"></script> -->
+  <!-- <script src="js/get_bus_details.js" type="text/javascript"></script> -->
+  <!-- <script src="js/autocomplete_bus_reg_num.js" type="text/javascript"></script> -->
+  <!-- <script src="js/suggestions.js" type="text/javascript"></script> -->
+  <!-- <script src="js/bus_select.js" type="text/javascript"></script> -->
+  <!-- <script src="js/get_bus_details_trigger.js" type="text/javascript"></script> -->
+  <script src="js/logout.js" type="text/javascript"></script>
+  <script src="js/role_check.js"></script>
+
+  <style type="text/css">
+    #mainMap{
+      height: 500px;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hello! You have logged in</h1>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+	     <a class="navbar-brand"><img src="images/logo.jpg" width="200px" height="52px" style=" margin-left: -15px; margin-top: -16px; "></a>
+      </div>
+      <ul class="nav navbar-nav">
+          <li><a id="middle" href="all_buses.html">Monitor Buses</a></li>
+          <li><a href="setup_screens.html">Setup Screens</a></li>
+  	       <li><a id="logout" style="cursor:pointer">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div align="center" class="main_div">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-7">
+          <div id="mainMap"></div>
+        </div>
+        <div class="col-xs-5">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <td align="center"><label style="color:green"><b>Bus Reg Number</b></label></th>
+                <td align="center"><label style="color:green"><b>Bus Id</b></label></th>
+                <td align="center"><label style="color:green"><b>Select</b></label></th>
+              </tr>
+            </thead>
+            <tbody id="suggestions">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-default navbar-fixed-bottom" style="height: 10px;">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://www.itspe.co.in/"><i>powered by <font color=#000000>ITSPE</font></i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <script type="text/javascript">
+    var mymap = L.map('mainMap').setView([17.3850, 78.4867], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoibWludS1hc3dhbnRoIiwiYSI6ImNqMmZ5eHI2NjA3NTcycW84cWJ0aTVhNTMifQ.gr7zDVUOL4aNC5XFZD4CiA'
+    }).addTo(mymap);
+  </script>
+
 </body>
 </html>
