@@ -9,7 +9,8 @@ try {
 	$contactno = $_POST['contactno'];
 	
 	$link = linkToOBITS();
-	$handle=$link->prepare("UPDATE `depo` SET `ID`=[value-1],`Latitude`=[value-2],`Longitude`=[value-3],`OperatorContactNo`=[value-4],`LastUpdate`=[value-5] WHERE 1"); 
+	$handle=$link->prepare("UPDATE `depo` SET `Latitude`=:latitude,`Longitude`=:longitude,`OperatorContactNo`=:contactno WHERE `ID`=:id"); 
+	$handle->bindParam(':id', $id);
 	$handle->bindParam(':latitude', $latitude);
 	$handle->bindParam(':longitude', $longitude);
 	$handle->bindParam(':contactno', $contactno);
