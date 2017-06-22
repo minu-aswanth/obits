@@ -19,8 +19,9 @@ try {
 
 	$num_column = count($header);		
 	$link = linkToOBITS();
-	$handle2=$link->prepare("SELECT * FROM bus"); 
+	$handle2=$link->prepare("SELECT bus.RegistrationNo, depo.Name ,bus.PhoneNumberOfSCU, bus.LastUpdate FROM bus INNER JOIN depo ON bus.depo_id = depo.ID;"); 
 	$handle2->execute();
+	fputcsv($fp, ["Registration Number","Depo Name","Phone Number of SCU","Last Updated"]);
 	while($row = $handle2->fetch(PDO::FETCH_ASSOC)) {
 		fputcsv($fp, $row);
 	}
