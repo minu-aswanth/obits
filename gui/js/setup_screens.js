@@ -10,7 +10,7 @@ $( document ).ready(function() {
 			depoid: depo_id
 		}
 		$.ajax({
-			url: '../utils/add_bus.php',
+			url: 'utils/add_bus.php',
 			data: data,
 			type: 'POST',
 			success: function(result) {
