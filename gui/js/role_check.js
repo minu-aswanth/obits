@@ -13,7 +13,7 @@ $(document).ready(function(){
 					// if(result=="user"){
 					// 	$('.admin').remove()
 					// }
-					console.log(result);
+					// console.log(result);
 				}
 			}
         });

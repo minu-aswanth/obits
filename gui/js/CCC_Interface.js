@@ -1,15 +1,58 @@
 $(document).ready(function() {
 
+	var mymap = L.map('mainMap').setView([17.3850, 78.4867], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoibWludS1hc3dhbnRoIiwiYSI6ImNqMmZ5eHI2NjA3NTcycW84cWJ0aTVhNTMifQ.gr7zDVUOL4aNC5XFZD4CiA'
+    }).addTo(mymap);
+    var busIcon = L.icon({
+    	iconUrl: 'images/busicon.png',
+    	iconSize: [25, 25], // size of the icon
+    });
+    var markers = L.markerClusterGroup();
+    var marker = L.marker([17.3850, 78.4867], {icon: busIcon});
+    var marker1 = L.marker([17.4850, 78.4867], {icon: busIcon});
+
+    var lat = 17.3850;
+    var long = 78.4867;
+    setInterval(function(){
+  		updateBusLocation();
+	}, 5000);
+
+    function updateBusLocation(){
+    	markers.clearLayers();
+		for(var i=0; i<busesInDepo.length; i++){
+			$.ajax({
+				url: 'utils/get_bus_location.php',
+				data: {regno: busesInDepo[i]},
+				type: 'POST',
+				success: function(res) {
+					res = $.parseJSON(res);
+					console.log(res);
+					var marker = L.marker([res.Latitude, res.Longitude], {icon: busIcon});
+					markers.addLayer(marker);
+				}
+			});
+		}
+    	mymap.addLayer(markers);
+    }
+
 	//getting all buses initially to display in the table
+	var busesInDepo = [];
 	$.ajax({
-		url: 'utils/get_all_buses.php',
+		url: 'utils/get_all_buses_for_user.php',
 		type: 'POST',
 		success: function(result) {
 			var buses = $.parseJSON(result);
 			// console.log(buses);
 			for (var i = 0; i < buses.length; i++) {
 				$('.bus_table tbody').append('<tr><td>'+(i+1)+'</td><td>'+buses[i].RegistrationNo+'</td><td style="display:none">'+buses[i].Depo_ID+'</td><td>'+buses[i].Name+'</td><td>'+buses[i].PhoneNumberOfSCU+'</td></tr>');
+				busesInDepo.push(buses[i].RegistrationNo);
 			}
+			console.log(busesInDepo);
+			//adding markers in map
+			updateBusLocation();					
 		}
 	});
 
