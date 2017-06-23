@@ -37,7 +37,7 @@
 
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#bus_div">List of buses</a></li>
-    <li><a data-toggle="tab" href="#depo_div">List of depos</a></li>
+    <li><a data-toggle="tab" href="#depo_div">List of depots</a></li>
   </ul>
 
   <div class="tab-content">
@@ -59,7 +59,7 @@
 							<th colspan="1">&nbsp;</th>
 							<th colspan="2">Sr No.</th>
 							<th colspan="4">Bus Registration Number</th>
-							<th colspan="4">Depo Name</th>
+							<th colspan="4">Depot Name</th>
 							<th colspan="4">SCU Phone Number</th>
 						</tr>
 					</thead>
@@ -78,12 +78,12 @@
   </div>
 
   <div align="center" class="main_div tab-pane fade" style="text-align: center;" id="depo_div">
-  	<h2>List of Depos</h2><br>
+  	<h2>List of Depots</h2><br>
 		<div class="row">
 			<div class="col-sm-3">&nbsp;</div>
-			<div class="col-sm-2"><button class="btn btn-info add_depo_modal" onclick='$("#add_depo_modal").modal()'>Add Depo</button></div>
-			<div class="col-sm-2"><button class="btn btn-info update_depo_modal" onclick=update_depo_modal()>Update Depo</button></div>
-			<div class="col-sm-2"><button class="btn btn-info delete_depo_modal" onclick=delete_depo_modal()>Delete Depo</button></div>
+			<div class="col-sm-2"><button class="btn btn-info add_depo_modal" onclick='$("#add_depo_modal").modal()'>Add Depot</button></div>
+			<div class="col-sm-2"><button class="btn btn-info update_depo_modal" onclick=update_depo_modal()>Update Depot</button></div>
+			<div class="col-sm-2"><button class="btn btn-info delete_depo_modal" onclick=delete_depo_modal()>Delete Depot</button></div>
 			<div class="col-sm-3">&nbsp;</div>
 		</div>
 
@@ -94,9 +94,9 @@
 						<tr>
 							<th colspan="1">&nbsp;</th>
 							<th colspan="2">Sr No.</th>
-							<th colspan="4">Depo Name</th>
-							<th colspan="4">Depo Latitude</th>
-							<th colspan="4">Depo Longitude</th>
+							<th colspan="4">Depot Name</th>
+							<th colspan="4">Depot Latitude</th>
+							<th colspan="4">Depot Longitude</th>
 							<th colspan="4">Operator Phone Numbers</th>
 						</tr>
 					</thead>
@@ -133,7 +133,7 @@
 									<td colspan="1"><input type="text" class="bus_registration_number form-control"></td>
 								</tr>
 								<tr>
-									<td colspan="1">Depo Name</td>
+									<td colspan="1">Depot Name</td>
 									<td colspan="1"><select class="depo_name_select form-control"></select></td>
 								</tr>
 								<tr>
@@ -168,7 +168,7 @@
 									<td colspan="1"><input type="text" class="bus_registration_number_update form-control" disabled></td>
 								</tr>
 								<tr>
-									<td colspan="1">Depo Name</td>
+									<td colspan="1">Depot Name</td>
 									<td colspan="1"><select class="depo_name_select_update form-control"></select></td>
 								</tr>
 								<tr>
@@ -193,22 +193,22 @@
 	  				<span class="glyphicon glyphicon-remove"></span> Cancel
 	  			</button>
 	    		<div class="modal-header" style="padding:10px 50px;">
-		  			<h3>Add Depo</h3>
+		  			<h3>Add Depot</h3>
 	    		</div>
 	    		<div class="modal-body table-responsive" style="padding:0px 50px;">
 	    			<div class="add_depo_div">
 						<table class="table table-bordered">
 							<tbody class="plans_body">
 								<tr>
-									<td colspan="1">Depo Name</td>
+									<td colspan="1">Depot Name</td>
 									<td colspan="1"><input type="text" class="depo_name form-control"></td>
 								</tr>
 								<tr>
-									<td colspan="1">Depo Latitude</td>
+									<td colspan="1">Depot Latitude</td>
 									<td colspan="1"><input type="text" class="depo_lat form-control"></td>
 								</tr>
 								<tr>
-									<td colspan="1">Depo Longitude</td>
+									<td colspan="1">Depot Longitude</td>
 									<td colspan="1"><input type="text" class="depo_long form-control"></td>
 								</tr>
 								<tr>
@@ -217,7 +217,7 @@
 								</tr>
 							</tbody>
 						</table>
-						<div style="text-align: center;"><button class="btn btn-info add_depo">Add Depo</button></div>
+						<div style="text-align: center;"><button class="btn btn-info add_depo">Add Depot</button></div>
 					</div>
 					<br>
 				</div>
@@ -232,26 +232,26 @@
 	  				<span class="glyphicon glyphicon-remove"></span> Cancel
 	  			</button>
 	    		<div class="modal-header" style="padding:10px 50px;">
-		  			<h3>Update Depo</h3>
+		  			<h3>Update Depot</h3>
 	    		</div>
 	    		<div class="modal-body table-responsive" style="padding:0px 50px;">
 					<div class="update_depo_div">
 						<table class="table table-bordered">
 							<tbody class="update_info">
 								<tr style="display: none">
-									<td colspan="1">Depo Id</td>
+									<td colspan="1">Depot Id</td>
 									<td colspan="1"><input type="text" class="depo_id_update form-control" disabled></td>
 								</tr>
 								<tr>
-									<td colspan="1">Depo Name</td>
+									<td colspan="1">Depot Name</td>
 									<td colspan="1"><input type="text" class="depo_name_update form-control"></td>
 								</tr>
 								<tr>
-									<td colspan="1">Depo Latitude</td>
+									<td colspan="1">Depot Latitude</td>
 									<td colspan="1"><input type="text" class="depo_lat_update form-control"></td>
 								</tr>
 								<tr>
-									<td colspan="1">Depo Longitude</td>
+									<td colspan="1">Depot Longitude</td>
 									<td colspan="1"><input type="text" class="depo_long_update form-control"></td>
 								</tr>
 								<tr>
@@ -260,7 +260,7 @@
 								</tr>
 							</tbody>
 						</table>
-						<div style="text-align: center;"><button class="btn btn-info update_depo">Update Depo</button></div>
+						<div style="text-align: center;"><button class="btn btn-info update_depo">Update Depot</button></div>
 							<br/>
 					</div>
 				</div>

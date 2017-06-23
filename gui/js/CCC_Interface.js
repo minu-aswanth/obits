@@ -43,7 +43,7 @@ $(document).ready(function() {
 			var buses = $.parseJSON(result);
 			// console.log(buses);
 			for (var i = 0; i < buses.length; i++) {
-				$('.bus_table tbody').append('<tr><td>'+(i+1)+'</td><td>'+buses[i].RegistrationNo+'</td><td style="display:none">'+buses[i].Depo_ID+'</td><td>'+buses[i].PhoneNumberOfSCU+'</td><td><input type="checkbox" class="busFilterCheckbox" value='+ buses[i].RegistrationNo +' checked></td></tr>');
+				$('.bus_table tbody').append('<tr><td>'+(i+1)+'</td><td>'+buses[i].RegistrationNo+'</td><td style="display:none">'+buses[i].Depo_ID+'</td><td>'+buses[i].PhoneNumberOfSCU+'</td><td><input type="checkbox" class="busFilterCheckbox" value='+ buses[i].RegistrationNo +'></td></tr>');
 				busesInDepo.push(buses[i].RegistrationNo);
 			}
 			busesInDepoDuplicate = busesInDepo;
@@ -53,12 +53,16 @@ $(document).ready(function() {
 
 			//filter function
 			$(".busFilterCheckbox").click(function(){
-				console.log("Hello");
+				if(busesInDepo == busesInDepoDuplicate)
+					busesInDepo = [];
 		        var index = busesInDepo.indexOf($(this).val());
-		        if(index==-1)
+		        if(index == -1)
 		        	busesInDepo.push($(this).val());
-		        else
+		        else{
 		        	busesInDepo.splice(index, 1);
+		        }
+		        if(busesInDepo.length == 0)
+		        	busesInDepo = busesInDepoDuplicate;
 		        // console.log(busesInDepo);
 		        updateBusLocation();
 		    });					
