@@ -11,11 +11,7 @@ $(document).ready(function() {
     	iconSize: [25, 25], // size of the icon
     });
     var markers = L.markerClusterGroup();
-    var marker = L.marker([17.3850, 78.4867], {icon: busIcon});
-    var marker1 = L.marker([17.4850, 78.4867], {icon: busIcon});
-
-    var lat = 17.3850;
-    var long = 78.4867;
+    
     setInterval(function(){
   		updateBusLocation();
 	}, 5000);
@@ -47,12 +43,25 @@ $(document).ready(function() {
 			var buses = $.parseJSON(result);
 			// console.log(buses);
 			for (var i = 0; i < buses.length; i++) {
-				$('.bus_table tbody').append('<tr><td>'+(i+1)+'</td><td>'+buses[i].RegistrationNo+'</td><td style="display:none">'+buses[i].Depo_ID+'</td><td>'+buses[i].Name+'</td><td>'+buses[i].PhoneNumberOfSCU+'</td></tr>');
+				$('.bus_table tbody').append('<tr><td>'+(i+1)+'</td><td>'+buses[i].RegistrationNo+'</td><td style="display:none">'+buses[i].Depo_ID+'</td><td>'+buses[i].PhoneNumberOfSCU+'</td><td><input type="checkbox" class="busFilterCheckbox" value='+ buses[i].RegistrationNo +' checked></td></tr>');
 				busesInDepo.push(buses[i].RegistrationNo);
 			}
-			console.log(busesInDepo);
+			busesInDepoDuplicate = busesInDepo;
+			// console.log(busesInDepo);
 			//adding markers in map
-			updateBusLocation();					
+			updateBusLocation();
+
+			//filter function
+			$(".busFilterCheckbox").click(function(){
+				console.log("Hello");
+		        var index = busesInDepo.indexOf($(this).val());
+		        if(index==-1)
+		        	busesInDepo.push($(this).val());
+		        else
+		        	busesInDepo.splice(index, 1);
+		        // console.log(busesInDepo);
+		        updateBusLocation();
+		    });					
 		}
 	});
 
